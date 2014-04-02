@@ -1,0 +1,45 @@
+{#
+
+ {% snippet 'snippets/search_result_text.html', query=query, count=count, type='dataseit' %}
+
+#}
+{% if type == 'dataset' %}
+  {% set text_query = ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{query}"', count) %}
+  {% set text_query_none = _('No datasets found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} dataset found', '{number} datasets found', count) %}
+  {% set text_no_query_none = _('No datasets found') %}
+
+{% elif type == 'group' %}
+  {% set text_query = ungettext('{number} subject found for "{query}"', '{number} subjects found for "{query}"', count) %}
+  {% set text_query_none = _('No subjects found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} subject found', '{number} subjects found', count) %}
+  {% set text_no_query_none = _('No subjects found') %}
+
+{% elif type == 'organization' %}
+  {% set text_query = ungettext('{number} contributor found for "{query}"', '{number} contributors found for "{query}"', count) %}
+  {% set text_query_none = _('No contributors found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} contributor found', '{number} contributors found', count) %}
+  {% set text_no_query_none = _('No contributors found') %}
+{%- endif -%}
+
+{% if type == 'harvest' %}
+  {% set text_query = ungettext('{number} harvest source found for "{query}"', '{number} harvest sources found for "{query}"', count) %}
+  {% set text_query_none = _('Sorry no harvest sources found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} harvest source found', '{number} harvest sources found', count) %}
+  {% set text_no_query_none = _('Sorry no harvest sources found') %}
+{%- endif -%}
+
+
+{% if query %}
+  {%- if count -%}
+    {{ text_query.format(number=h.localised_number(count), query=query) }}
+  {%- else -%}
+    {{ text_query_none.format(query=query) }}
+  {%- endif -%}
+{%- else -%}
+  {%- if count -%}
+    {{ text_no_query.format(number=h.localised_number(count)) }}
+  {%- else -%}
+    {{ text_no_query_none }}
+  {%- endif -%}
+{%- endif -%}

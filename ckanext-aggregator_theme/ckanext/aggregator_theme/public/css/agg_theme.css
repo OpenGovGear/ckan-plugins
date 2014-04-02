@@ -1,0 +1,33 @@
+
+body {
+  background: url("../../../base/images/bg.png"); !important
+}
+
+.account-masthead {
+background: gainsboro;
+}
+.masthead {
+background: url("../../../base/images/bg.png"); !important
+}
+.masthead a {
+color:111;
+}
+.site-footer {
+background: url("../../../base/images/bg.png"); !important
+}
+
+.homepage .module-search .module-content {
+background-color: #00346f; !important
+}
+
+.homepage .module-search .tags {
+background-color: #00346f; !important
+}
+
+.hero {
+background: gainsboro;
+
+}
+.masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
+background-color: #00364;
+}

@@ -1,0 +1,75 @@
+{% ckan_extends %}
+{% block subtitle %}{{ _('Subjects') }}{% endblock %}
+
+{% block toolbar %}
+<div class="toolbar">
+	{% block breadcrumb %}
+	{% if self.breadcrumb_content() | trim %}
+	<ol class="breadcrumb">
+		{% snippet 'snippets/home_breadcrumb_item.html' %}
+		{% block breadcrumb_content %}
+		<li class="active">
+			{% link_for _('Subjects'), controller='group', action='index' %}
+		</li>
+		{% endblock %}
+	</ol>
+	{% endif %}
+	{% endblock %}
+	{% if self.page_primary_action() | trim %}
+	<div class="page_primary_action_new">
+		{% block page_primary_action %}
+		{% if h.check_access('group_create') %}
+		{% link_for _('Add Subject'), controller='group', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+		{% endif %}
+		{% endblock %}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block primary %}
+<div class="primary-views">
+	{% block primary_content %}
+	<article class="module">
+		{% block page_header %}
+
+		{% if self.content_action() | trim %}
+		<div class="content_action">
+			{% block content_action %}{% endblock %}
+		</div>
+		{% endif %}
+		<ul class="nav nav-tabs">
+			{% block content_primary_nav %}{% endblock %}
+		</ul>
+
+		{% endblock %}
+		<div class="module-content">
+
+			{% block primary_content_inner %}
+			<h1 class="hide-heading">{{ _('Subjects') }}</h1>
+			{% block groups_search_form %}
+			{% snippet 'snippets/search_form.html', type='group', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search groups...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
+			{% endblock %}
+			{% block groups_list %}
+			{% if c.page.items or request.params %}
+			{% if c.page.items %}
+			{% snippet "group/snippets/group_list.html", groups=c.page.items %}
+			{% endif %}
+			{% else %}
+			<p class="empty">
+				{{ _('There are currently no subjects for this site') }}.
+				{% if h.check_access('group_create') %}
+				{% link_for _('How about creating one?'), controller='group', action='new' %}</a>.
+				{% endif %}
+			</p>
+			{% endif %}
+			{% endblock %}
+		</div>
+	</article>
+	{% endblock %}
+</div>
+{% endblock %}
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
