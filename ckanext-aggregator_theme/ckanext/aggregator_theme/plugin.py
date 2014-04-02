@@ -17,7 +17,7 @@ def url_for_display_image(group_id):
     return group_dict["image_display_url"]
 
 class AggregatorThemeClass(plugins.SingletonPlugin):
-    '''An example theme plugin.
+    '''The Aggregator theme plugin.
 
     '''
     # Declare that this class implements IConfigurer.
@@ -34,9 +34,9 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
 	toolkit.add_public_directory(config, 'public')
         toolkit.add_template_directory(config, 'templates')
 	toolkit.add_resource('fantastic', 'agg_theme')
+    
     def get_helpers(self):
-        '''Register the most_popular_groups() function above as a template
-        helper function.
+        '''Register helper functions.
 
         '''
         # Template helper function names should begin with the name of the
