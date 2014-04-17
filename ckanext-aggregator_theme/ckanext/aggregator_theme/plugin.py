@@ -1,9 +1,11 @@
-'''plugin.py
+'''
+plugin.py for the aggregator theme
 
 '''
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckan.logic as logic
+
 def get_orgs():
     '''Return a sorted list of the groups with the most dataset'''
     context = {'user':'civic_info'}
