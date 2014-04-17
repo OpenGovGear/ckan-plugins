@@ -1,9 +1,9 @@
 Metadata-Version: 1.0
-Name: ckanext-shell-theme
+Name: ckanext-simple-theme
 Version: 0.1
-Summary: ckan shell theme
-Home-page: http://opengovgear.com/
-Author: Luke Chisholm
+Summary: simple ckan theme
+Home-page: opengovgear.com
+Author: opengov gear
 Author-email: luke.chisholm6@gmail.com
 License: UNKNOWN
 Description: 
