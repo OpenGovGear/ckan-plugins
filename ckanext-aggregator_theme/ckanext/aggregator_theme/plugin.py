@@ -13,7 +13,7 @@ def get_orgs():
     return logic.get_action('group_list_authz')(context, data_dict)
 
 def url_for_display_image(group_id):
-        # Call organization_show to get url of uploaded image
+    # Call organization_show to get url of uploaded image
     data_dict ={"id":group_id}
     group_dict = logic.get_action('organization_show')({}, data_dict)
     return group_dict["image_display_url"]
