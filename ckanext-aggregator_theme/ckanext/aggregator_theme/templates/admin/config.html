@@ -1,4 +1,5 @@
 {% ckan_extends %}
+
 {% set form_info = [
       {'name': 'license.title', 'control': 'input', 'label': _('Title')},
       {'name': 'license.id', 'control': 'input', 'label': _('ID')},
@@ -8,19 +9,21 @@
       {'name': 'license.status', 'control': 'checkbox', 'label': _('Active')},
       {'name': 'license.odk_compliant', 'control': 'checkbox', 'label': _('ODK Complaint')},
       {'name': 'license.osi_compliant', 'control': 'checkbox', 'label': _('OSI Compliant')},
+      {'name': 'license.generic', 'control': 'checkbox', 'label': _('Generic')},
       {'name': 'license.domain_data', 'control': 'checkbox', 'label': _('Domain Data')},
       {'name': 'license.domain_content', 'control': 'checkbox', 'label': _('Domain Content')},
       {'name': 'license.domain_software', 'control': 'checkbox', 'label': _('Domain Software')},
       ] %}
+
 {% block primary_content_inner %}
   <form method='post' action="" class="form-horizontal">
     {% block admin_form %}
-      {{ autoform.generate(form_info) }}
+    {{ autoform.generate(form_items, data, errors) }}      
     {% endblock %}
     <div class="form-actions">
       {% set locale = h.dump_json({'content': _('Are you sure you want to reset the config?')}) %}
-      <a href="{% url_for controller='admin', action='reset_config' %}" class="btn btn-danger pull-left" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Reset') }}</a>
-      <button type="submit" class="btn btn-primary" name="save">{{ _('Update Config') }}</button>
+     <!-- <a href="{% url_for controller='admin', action='reset_config' %}" class="btn btn-danger pull-left" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Reset') }}</a> -->
+      <button type="submit" class="btn btn-primary" name="save">{{ _('Add License') }}</button>
     </div>
   </form>
 {% endblock %}
@@ -29,8 +32,7 @@
       {% set about_url = h.url_for(controller='home', action='about') %}
       {% set home_url = h.url_for(controller='home', action='index') %}
       {% set docs_url = "http://docs.ckan.org/en/{0}/theming.html".format(g.ckan_doc_version) %}
-      {% trans %}
-        <p><strong>Site Title:</strong> This is the title of this CKAN instance
+        <p><strong></strong> This is the title of this CKAN instance
           It appears in various places throughout CKAN.</p>
         <p><strong>Style:</strong> Choose from a list of simple variations of
           the main colour scheme to get a very quick custom theme working.</p>
@@ -46,6 +48,5 @@
         <p><strong>Homepage:</strong> This is for choosing a predefined layout for
            the modules that appear on your homepage.</p>
         <p><strong>Featured:</strong> This is for choosing which subject and contributor
-           will appear on the fron page.</p>
-      {% endtrans %}
+           will appear on the front page.</p>
       {% endblock %}

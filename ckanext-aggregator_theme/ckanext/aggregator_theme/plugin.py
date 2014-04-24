@@ -5,7 +5,7 @@ plugin.py for the aggregator theme
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckan.logic as logic
-
+import io, json
 def get_orgs():
     '''Return a sorted list of the groups with the most dataset'''
     context = {'user':'civic_info'}
@@ -22,9 +22,8 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
     '''The Aggregator theme plugin.
 
     '''
-    # Declare that this class implements IConfigurer.
     plugins.implements(plugins.IConfigurer)
-
+    plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
 
     def update_config(self, config):
@@ -45,4 +44,14 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
         return {'get_orgs': get_orgs, 'url_for_display_image': url_for_display_image}
-
+    
+    def before_map(self, m):
+        
+	# This sets up a route for the licence plugin. The format goes as follows
+	#
+	# m.connect('route_alias', 'url', controller='path.to.controller:ProperController',
+	# action='function_to_call', ckan_icon='relevant_icon')
+	m.connect('ckanadmin_licences', '/ckan-admin/licences',
+                    controller='ckanext.aggregator_theme.controller:LicenceController',
+                    action='add', ckan_icon='edit')
+	return m
