@@ -65,7 +65,7 @@
 
   	// Open the connection and create the URL as a get.  The data will be sent as part of the URL, so it
   	// needs to be appended to the open method call.
-  	xmlHttp.open("GET","archiveProcessForm.php?where=" + queryString, true);
+  	xmlHttp.open("GET","processAjaxFunction.php?where=" + queryString, true);
  
   	// Send it with no data as the data is sent above as part of the URL.
   	xmlHttp.send(null);
