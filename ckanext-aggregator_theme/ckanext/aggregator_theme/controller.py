@@ -11,16 +11,15 @@ c = base.c
 request = base.request
 _ = base._
 
- # this should be a relative path 
-LICENCE_FILE = '/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/licences.json'
-FEATURED_FILE = '/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/featured.json'
+LICENSE_FILE = 'data/licenses.json'
+FEATURED_FILE = 'data/featured.json'
 
-class LicenceController(base.BaseController):
+class LicenseController(base.BaseController):
 
 
     #This restricts view of this page to sysadmins   
     def __before__(self, action, **params):
-        super(LicenceController, self).__before__(action, **params)
+        super(LicenseController, self).__before__(action, **params)
         context = {'model': model,
                    'user': c.user, 'auth_user_obj': c.userobj}
         try:
@@ -35,9 +34,9 @@ class LicenceController(base.BaseController):
 	# This is a list of items for the form. Pass these items into the form generator.
 	# This is also used to iterate through the items in the form while building the license
 	items = [
-        	{'name': 'title', 'control': 'input', 'label': _('Title'), 'placeholder' : 'My Licence', 'is_required': 'is_required'},
+        	{'name': 'title', 'control': 'input', 'label': _('Title'), 'placeholder' : 'My License', 'is_required': 'is_required'},
       		{'name': 'maintainer', 'control': 'input', 'label': _('Maintainer'), 'placeholder' : 'My Licensing Body'},
-      		{'name': 'url', 'control': 'input', 'label': _('URL'), 'placeholder' : 'http://www.mylicenceinfo.com'},
+      		{'name': 'url', 'control': 'input', 'label': _('URL'), 'placeholder' : 'http://www.mylicenseinfo.com'},
 	      	{'name': 'family', 'control': 'input', 'label': _('Family')},
 		{'name': 'status', 'control': 'checkbox', 'label': _('Active')},
       		{'name': 'is_okd_compliant', 'control': 'checkbox', 'value' : True, 'label': _('ODK Complaint')},
@@ -52,7 +51,7 @@ class LicenceController(base.BaseController):
 
     def _get_delete_form(self, data):
 	
-	items = [ {'name': 'licence', 'control' : 'select', 'options' : self._get_licence_titles(), 'selected' : data.get('licence'), 'label' : _('Licence')},
+	items = [ {'name': 'license', 'control' : 'select', 'options' : self._get_license_titles(), 'selected' : data.get('license'), 'label' : _('License')},
                 ]
 	return items
 
@@ -62,110 +61,110 @@ class LicenceController(base.BaseController):
 	items = self._get_form_items() # get form items
 	delete_items = self._get_delete_form(data)
 	if 'delete' in data:
-	    self._delete_licence(data['licence'])
+	    self._delete_license(data['license'])
 
 	elif 'edit' in data:
-	    licence_data = self._get_licence(data['licence'])
-	    licence_data['licence'] = data['licence']
+	    license_data = self._get_license(data['license'])
+	    license_data['license'] = data['license']
 	    
-	    vars = {'data': licence_data, 'errors': {}, 'form_items': items, 'delete_form_items': delete_items}
-            return base.render('admin/licences.html',
+	    vars = {'data': license_data, 'errors': {}, 'form_items': items, 'delete_form_items': delete_items}
+            return base.render('admin/licenses.html',
                            extra_vars = vars)
 	
 	elif 'save' in data:
-	    licence = {}
+	    license = {}
             # iterate through each item in the form and match it with corresponding form data
 	    
 	    # redirect if title is empty
 	    if data['title'] is u'':
 		vars = {'data': data, 'errors': {'title': ['Required']}, 'form_items': items, 'delete_form_items': delete_items}
-                return base.render('admin/licences.html',
+                return base.render('admin/licenses.html',
                            extra_vars = vars)
 
             for item in items:
 		name = item['name']
         
 	        if name not in data: # if checkbox not checked data will not have the form item
-		    licence[name] = False # set the checkbox to false for not checked
-		elif item['control'] is 'checkbox': # If checkbox is checked the value is u'' we want to make it True
-		    licence[name] = True	
+		    license[name] = False # set the checkbox to false for not checked
+		elif data[name] is u'' and item['control'] is 'checkbox':
+		    license[name] = True	
 		else:
-		    licence[name] = data[name] # match the item key to the data value
+		    license[name] = data[name] # match the item key to the data value
 		
 	
-   	    licence['id'] =  licence['title'].replace (" ", "-") # change the title into database loadable ID
-	    self._add_licence(licence)
-	delete_items = self._get_delete_form(data) # refresh the form for page reload
+   	    license['id'] =  license['title'].replace (" ", "-") # change the title into database loadable ID
+	    self._add_license(license)
+	delete_items = self._get_delete_form(data)
 
 	vars = {'data': {}, 'errors': {}, 'form_items': items, 'delete_form_items': delete_items}
-	return base.render('admin/licences.html',
+	return base.render('admin/licenses.html',
                            extra_vars = vars)
 
 
-    def _get_licence(self, target_licence):
-	with open(LICENCE_FILE, 'r') as read:
-            licences = json.load(read)
+    def _get_license(self, target_license):
+	with open(LICENSE_FILE, 'r') as read:
+            licenses = json.load(read)
         
-	licence_dict = {}
-        for licence in licences:
-	    if str(licence['id']) == target_licence:
-                licence_dict = licence
-   	return licence_dict
+	license_dict = {}
+        for license in licenses:
+	    if str(license['id']) == target_license:
+                license_dict = license
+   	return license_dict
 
  
-    def _add_licence(self, target_licence):
-	with open(LICENCE_FILE, 'r') as read:
-            licences = json.load(read)
+    def _add_license(self, target_license):
+	with open(LICENSE_FILE, 'r') as read:
+            licenses = json.load(read)
 
-	#if the licence is already in the file update the licence
-	for licence in licences:
-           if licence['id'] == target_licence['id']:
-		licence.update(target_licence)
-		with open(LICENCE_FILE, 'w') as outfile:
-            	    json.dump(licences, outfile)
+	#if the license is already in the file update the license
+	for license in licenses:
+           if license['id'] == target_license['id']:
+		license.update(target_license)
+		with open(LICENSE_FILE, 'w') as outfile:
+            	    json.dump(licenses, outfile)
 		return True
     	
-	# add the new license if the licence is not in the file
-	licences.append(target_licence)
+	# add the new license if the license is not in the file
+	licenses.append(target_license)
     	# write to file
-	with open(LICENCE_FILE, 'w') as outfile:
-            json.dump(licences, outfile)
+	with open(LICENSE_FILE, 'w') as outfile:
+            json.dump(licenses, outfile)
 
 
-    def _delete_licence(self, target_licence):
-	with open(LICENCE_FILE, 'r') as read:
-            licences = json.load(read)
+    def _delete_license(self, target_license):
+	with open(LICENSE_FILE, 'r') as read:
+            licenses = json.load(read)
         # remove the target license
-	for licence in licences:
-	    if str(licence['id']) == target_licence: 
-        	licences.remove(licence)
+	for license in licenses:
+	    if str(license['id']) == target_license: 
+        	licenses.remove(license)
         # write to file
-	with open(LICENCE_FILE, 'w') as outfile:
-            json.dump(licences, outfile)
+	with open(LICENSE_FILE, 'w') as outfile:
+            json.dump(licenses, outfile)
 
 	
-    # reload the licence file
-    def _load_licences(self):
+    # reload the license file
+    def _load_licenses(self):
 	license_register = model.Package.get_license_register()
         group_url = config.get('licenses_group_url', None)
         if group_url:
             license_register.load_licenses(group_url)
     
  
-    # this returns a dict of licences that the dropdown can read
-    def _get_licence_titles(self):
+    # this returns a dict of licenses that the dropdown can read
+    def _get_license_titles(self):
 
-        self._load_licences()
+        self._load_licenses()
 	context = {'user' :'civic_info'}
     	data_dict = {}
-    	licences = logic.get_action('license_list')(context, data_dict)
+    	licenses = logic.get_action('license_list')(context, data_dict)
     	titles = []
+	for license in licenses:
+            license_dict = {}
+            license_dict['text'] = license['title']
+            license_dict['value'] = license['id']
+            titles.append(license_dict)
     	# the format goes ('text' : 'licence_title', 'value' : 'licence_id'}
-	for licence in licences:
-            licence_dict = {}
-            licence_dict['text'] = licence['title']
-            licence_dict['value'] = licence['id']
-            titles.append(licence_dict)
     	return titles
 
 

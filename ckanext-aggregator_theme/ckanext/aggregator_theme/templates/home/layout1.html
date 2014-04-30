@@ -2,16 +2,7 @@
  <div class="container">
  <div class="row row1">
  <div class="title">
- <h1 class="heading"> Intermunicipal Data Catalogue </h1>
- </div>
- <div class="about">
- <p> hello </p>
- </div>
-<div class="search">
-{% block search %}
-          {% snippet 'home/snippets/search.html' %}
-        {% endblock %}
-</div>
+ <h1 class="heading"> Awesome Banner </h1>
  </div>
  <div class="container">
     <div class="row row2">
@@ -21,8 +12,8 @@
 </div>
 <div role="main">
   <div class="container">
-    <div class="row row2">
-      <div class="span6 col1">
+      <div class="row row1">
+	<div class="span6 col1">
          <h3> Featured </h3>
 	 {% block featured_group %}
           {% snippet 'home/snippets/featured.html', featured = h.get_featured()[0] %}
@@ -36,7 +27,7 @@
 	<h3> Subjects </h3>
 	{% snippet "group/snippets/group_list.html", groups=h.get_groups() %}
 	</div>
-      </div>
+	</div>
     </div>
   </div>
 </div>
