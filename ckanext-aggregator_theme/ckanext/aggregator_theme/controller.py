@@ -164,11 +164,14 @@ class LicenseController(base.BaseController):
             license_dict['text'] = license['title']
             license_dict['value'] = license['id']
             titles.append(license_dict)
+    	# the format goes ('text' : 'licence_title', 'value' : 'licence_id'}
     	return titles
 
 
 class ConfigurationController(base.BaseController):
 
+
+    # restrict access to sysadmins
     def __before__(self, action, **params):
         super(ConfigurationController, self).__before__(action, **params)
         context = {'model': model,
