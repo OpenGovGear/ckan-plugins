@@ -11,6 +11,7 @@ c = base.c
 request = base.request
 _ = base._
 
+ # this should be a relative path 
 LICENCE_FILE = '/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/licences.json'
 FEATURED_FILE = '/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/featured.json'
 
@@ -86,7 +87,7 @@ class LicenceController(base.BaseController):
         
 	        if name not in data: # if checkbox not checked data will not have the form item
 		    licence[name] = False # set the checkbox to false for not checked
-		elif data[name] is u'' and item['control'] is 'checkbox':
+		elif item['control'] is 'checkbox': # If checkbox is checked the value is u'' we want to make it True
 		    licence[name] = True	
 		else:
 		    licence[name] = data[name] # match the item key to the data value
@@ -94,7 +95,7 @@ class LicenceController(base.BaseController):
 	
    	    licence['id'] =  licence['title'].replace (" ", "-") # change the title into database loadable ID
 	    self._add_licence(licence)
-	delete_items = self._get_delete_form(data)
+	delete_items = self._get_delete_form(data) # refresh the form for page reload
 
 	vars = {'data': {}, 'errors': {}, 'form_items': items, 'delete_form_items': delete_items}
 	return base.render('admin/licences.html',
@@ -159,6 +160,7 @@ class LicenceController(base.BaseController):
     	data_dict = {}
     	licences = logic.get_action('license_list')(context, data_dict)
     	titles = []
+    	# the format goes ('text' : 'licence_title', 'value' : 'licence_id'}
 	for licence in licences:
             licence_dict = {}
             licence_dict['text'] = licence['title']
@@ -169,6 +171,8 @@ class LicenceController(base.BaseController):
 
 class ConfigurationController(base.BaseController):
 
+
+    # restrict access to sysadmins
     def __before__(self, action, **params):
         super(ConfigurationController, self).__before__(action, **params)
         context = {'model': model,
