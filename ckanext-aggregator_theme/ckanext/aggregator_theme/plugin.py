@@ -7,7 +7,7 @@ import ckan.plugins.toolkit as toolkit
 import ckan.logic as logic
 import ckan.lib.helpers as h
 import json
-FEATURED_FILE = '/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/featured.json'
+FEATURED_FILE = 'data/featured.json'
 
 
 def get_orgs():
@@ -58,7 +58,7 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
         # plugin.py file.
 	toolkit.add_public_directory(config, 'public')
         toolkit.add_template_directory(config, 'templates')
-	toolkit.add_resource('fantastic', 'agg_theme')
+	toolkit.add_resource('fanstatic', 'agg_theme')
     
     def get_helpers(self):
         '''Register helper functions.
@@ -71,12 +71,12 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
     
     def before_map(self, m):
         
-	# This sets up a route for the licence plugin. The format goes as follows
+	# This sets up a route for the license plugin. The format goes as follows
 	#'
 	# m.connect('route_alias', 'url', controller='path.to.controller:ProperController',
 	# action='function_to_call', ckan_icon='relevant_icon')
-	m.connect('ckanadmin_licences', '/ckan-admin/licences',
-                    controller='ckanext.aggregator_theme.controller:LicenceController',
+	m.connect('ckanadmin_licenses', '/ckan-admin/licenses',
+                    controller='ckanext.aggregator_theme.controller:LicenseController',
                     action='add', ckan_icon='edit')
 	m.connect('ckanadmin_advanced', '/ckan-admin/advanced_configuration',
 		    controller='ckanext.aggregator_theme.controller:ConfigurationController',

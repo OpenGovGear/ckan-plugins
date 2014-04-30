@@ -13,7 +13,18 @@ padding-bottom: 20px;
 .media-grid {
 	margin: 0 0;
 }
-
+.small-media-item {
+	position: relative;
+	float: left;
+	height: 105px;
+	width: 95px;
+	padding: 5px;
+	margin: 5px 0 0 10px;
+	background-color: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 .row1 {
 	min-height: 200px;
 }
@@ -36,7 +47,7 @@ padding-bottom: 20px;
 	height: 170px;
 	width: 170px;
 	padding: 15px;
-	margin: 10px 0 0 18px;
+	margin: 10px 20px 10px 20px;
 	background-color: white;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
