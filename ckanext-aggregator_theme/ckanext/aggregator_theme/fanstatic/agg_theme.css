@@ -1,29 +1,49 @@
 body {
-	background: #293e6a url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdhgRDzXJ9lXkYWTWgCmfN3cjVdff3AQZnDDAiIwlEOeBK2d1HJw");
-	width: 1000px;
+	background: #ffffff;
+	margin-top: 0;
+	margin-bottom: 0;
 	margin-left: auto;
 	margin-right: auto;
 }
-
+.row {
+margin-left:20px;
+}
 .page_primary_action {
 margin-bottom: 20px;
 padding-bottom: 20px;
 }
+.masthead .container {
+width :90%;
+}
 
+.account-masthead .container {
+width: 90%;
+
+}
 .media-grid {
 	margin: 0 0;
+	background: none;
+	border: none;
+	padding: 0px 0px;
+
+
+
 }
+
 .small-media-item {
 	position: relative;
 	float: left;
-	height: 105px;
-	width: 95px;
-	padding: 5px;
-	margin: 5px 0 0 10px;
+	height: 125px;
+	width: 125px;
+	padding: 5px 0px;
+	margin: 5px 10px 0 10px;
 	background-color: white;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+}
+.media-view {
+border: none;
 }
 .row1 {
 	min-height: 200px;
@@ -32,29 +52,41 @@ padding-bottom: 20px;
 	float:right;
 }
 .homepage.layout-1 .row1 .col2 {
-	position: absolute;
-	top: 0;
-	right: 0;
+position: relative;
+top: 0;
+right: 0;
+padding-left: 40px;
 }
 
+
 .account-masthead {
-	background: #003058;
+	background: #7109AA;
+	width: 100%;
+        min-height: 30px;
+        position: fixed;
+        z-index: 100;
 }
 
 .media-item {
 	position: relative;
 	float: left;
-	height: 170px;
-	width: 170px;
-	padding: 15px;
-	margin: 10px 20px 10px 20px;
+	height: 210px;
+	width: 210px;
+	padding: 15px 5px;
+
+	margin: 10px 0px 10px 0px;
 	background-color: white;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
 .masthead {
-	background: #003058 url("../../../base/images/bg.png");
+	background: #7109AA url("../../../base/images/bg.png");
+	width: 100%;
+	min-height: 100px;
+	position: fixed;
+	z-index: 100;
+	top: 30px;
 }
 
 .masthead a {
@@ -62,9 +94,12 @@ padding-bottom: 20px;
 }
 
 footer.site-footer {
-	background: #003058 url("../../../base/images/bg.png");
-	height: 20px;
-	min-height: 20px;
+	background: #7109AA url("../../../base/images/bg.png");
+	height: 40px;
+	min-height: 40px;
+	width: 100%
+	left: 0;
+	right: 0;
 }
 
 .site-footer a {
@@ -94,6 +129,12 @@ footer.site-footer {
 .hero {
 	background: #ddd;
 	min-height: 400px;
+	overflow:auto;
+	padding:80px 0;
+	margin:110px auto;
+
+
+
 }
 
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
@@ -103,5 +144,11 @@ footer.site-footer {
 
 .account-masthead .account ul li a {
 	color: #ddd;
+}
+[role=main], .main {
+
+
+	background: none;
+
 }
 
