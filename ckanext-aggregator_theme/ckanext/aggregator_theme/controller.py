@@ -11,8 +11,8 @@ c = base.c
 request = base.request
 _ = base._
 
-LICENSE_FILE = 'data/licenses.json'
-FEATURED_FILE = 'data/featured.json'
+LICENSE_FILE = "data/licenses.json"
+FEATURED_FILE = "data/featured.json"
 
 class LicenseController(base.BaseController):
 

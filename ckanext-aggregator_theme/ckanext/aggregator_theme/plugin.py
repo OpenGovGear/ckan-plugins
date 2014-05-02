@@ -7,7 +7,7 @@ import ckan.plugins.toolkit as toolkit
 import ckan.logic as logic
 import ckan.lib.helpers as h
 import json
-FEATURED_FILE = 'data/featured.json'
+FEATURED_FILE = "data/featured.json"
 
 
 def get_orgs():
