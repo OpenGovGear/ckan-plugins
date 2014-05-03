@@ -1,1 +1,7 @@
 {% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+
+  {% resource 'complex_theme/complex_theme_ckan.css' %}
+{% endblock %}

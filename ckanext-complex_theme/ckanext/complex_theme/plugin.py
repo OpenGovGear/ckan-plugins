@@ -1,6 +1,23 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+def show_most_popular_groups():
+    '''Return the value of the most_popular_groups config setting.
+
+    To enable showing the most popular groups, add this line to the
+    [app:main] section of your CKAN config file::
+
+      ckan.example_theme.show_most_popular_groups = True
+
+    Returns ``False`` by default, if the setting is not in the config file.
+
+    :rtype: boolean
+
+    '''
+    value = config.get('ckan.complex_theme.show_most_popular_groups', False)
+    value = toolkit.asbool(value)
+    return value
+
 def most_popular_groups():
     '''Return a sorted list of groups with the most datasets. '''
 
@@ -34,7 +51,14 @@ class ComplexThemePlugin(plugins.SingletonPlugin):
         toolkit.add_resource('fanstatic', 'complex_theme')
 
     def get_helpers(self):
-        '''Register most_popular_groups() function aboive as a template
-        helper function.'''
+        '''Register the most_popular_groups() function above as a template
+        helper function.
 
-        return {'complex_theme_most_popular_groups': most_popular_groups}
+        '''
+        # Template helper function names should begin with the name of the
+        # extension they belong to, to avoid clashing with functions from
+        # other extensions.
+        return {'complex_theme_most_popular_groups': most_popular_groups,
+                'complex_theme_show_most_popular_groups':
+                show_most_popular_groups,
+                }
