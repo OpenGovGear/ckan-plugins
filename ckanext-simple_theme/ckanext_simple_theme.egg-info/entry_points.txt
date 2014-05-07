@@ -1,0 +1,5 @@
+
+        [ckan.plugins]
+        # Add plugins here, e.g.
+        simpleTheme=ckanext.simple_theme.plugin:SimpleThemePlugin
+    
