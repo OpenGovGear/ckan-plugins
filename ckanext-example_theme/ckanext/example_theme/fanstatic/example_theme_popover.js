@@ -41,6 +41,9 @@ ckan.module('example_theme_popover', function ($, _) {
 
     _onClick: function(event) {
 
+        // Make all the links on the page turn green.
+        this.$('i').greenify();
+
         // Send an ajax request to CKAN to render the popover.html snippet.
         // We wrap this in an if statement because we only want to request
         // the snippet from CKAN once, not every time the button is clicked.
