@@ -1,34 +1,34 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import ckan.model as model
+import ckan.lib.search as search
+import json
+import ckan.lib.helpers as h
+NUM_MOST_VIEWED_DATASETS = 3
 
-def show_most_popular_groups():
-    '''Return the value of the most_popular_groups config setting.
+def get_most_viewed_datasets(num_datasets=NUM_MOST_VIEWED_DATASETS):
+    try:
+        data = {'rows': num_datasets,
+                'sort': u'views_total desc',
+                'facet': u'false',
+                'fq': u'capacity: "public"',
+                'fl': 'id, name, title'}
+        # Ugly: going through ckan.lib.search directly
+        # (instead of get_action('package_search').
+        #
+        # TODO: Can we return views_total using package_search for internal
+        # use only (without outputting it during public API calls)?
+	query = search.query_for(model.Package)
+	result = query.run(data)
+	return [r for r in result.get('results', [])]
+    except search.SearchError, e:
+        log.error('Error searching for most viewed datasets')
+        log.error(e)
 
-    To enable showing the most popular groups, add this line to the
-    [app:main] section of your CKAN config file::
-
-      ckan.example_theme.show_most_popular_groups = True
-
-    Returns ``False`` by default, if the setting is not in the config file.
-
-    :rtype: boolean
-
-    '''
-    value = config.get('ckan.complex_theme.show_most_popular_groups', False)
-    value = toolkit.asbool(value)
-    return value
-
-def most_popular_groups():
-    '''Return a sorted list of groups with the most datasets. '''
-
-    # get a list of all sites groups from ckan sorted by # of datasets
-    groups = toolkit.get_action('group_list')(
-        data_dict={'sort': 'packages desc', 'all_fields': True})
-
-    # Trunc the list to 10
-    groups = groups[:10]
-
-    return groups
+def get_tag_names():
+    tags = h.get_facet_items_dict('tags', limit=20)
+    tag_names = [tag['name'] for tag in tags]
+    return json.dumps(tag_names)
 
 class ComplexThemePlugin(plugins.SingletonPlugin):
     '''An example theme plugin.
@@ -58,7 +58,6 @@ class ComplexThemePlugin(plugins.SingletonPlugin):
         # Template helper function names should begin with the name of the
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
-        return {'complex_theme_most_popular_groups': most_popular_groups,
-                'complex_theme_show_most_popular_groups':
-                show_most_popular_groups,
+        return {'get_most_viewed_datasets': get_most_viewed_datasets,        
+		'get_tag_names' : get_tag_names
                 }
