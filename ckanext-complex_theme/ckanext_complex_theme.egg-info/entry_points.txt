@@ -1,5 +1,0 @@
-
-        [ckan.plugins]
-        # Add plugins here, e.g.
-        complex_theme=ckanext.complex_theme.plugin:ComplexThemePlugin
-    

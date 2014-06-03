@@ -1,0 +1,5 @@
+
+        [ckan.plugins]
+        # Add plugins here, e.g.
+        aggregator_theme=ckanext.aggregator_theme.plugin:AggregatorThemeClass
+    
