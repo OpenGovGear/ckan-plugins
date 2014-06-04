@@ -1,0 +1,75 @@
+{% ckan_extends %}
+{% block subtitle %}{{ _('Contributors') }}{% endblock %}
+
+{% block toolbar %}
+<div class="toolbar">
+	{% block breadcrumb %}
+	{% if self.breadcrumb_content() | trim %}
+	<ol class="breadcrumb">
+		{% snippet 'snippets/home_breadcrumb_item.html' %}
+		{% block breadcrumb_content %}
+		<li class="active">
+			{% link_for _('Contributors'), controller='organization', action='index' %}
+		</li>
+		{% endblock %}
+	</ol>
+	{% endif %}
+	{% endblock %}
+	{% if self.page_primary_action() | trim %}
+	<div class="page_primary_action_new">
+		{% block page_primary_action %}
+		{% if h.check_access('organization_create') %}
+		{% link_for _('Add Contributor'), controller='organization', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+		{% endif %}
+		{% endblock %}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block primary %}
+<div class="primary-views">
+	{% block primary_content %}
+	<article class="module">
+		{% block page_header %}
+
+		{% if self.content_action() | trim %}
+		<div class="content_action">
+			{% block content_action %}{% endblock %}
+		</div>
+		{% endif %}
+		<ul class="nav nav-tabs">
+			{% block content_primary_nav %}{% endblock %}
+		</ul>
+
+		{% endblock %}
+		<div class="module-content">
+
+			{% block primary_content_inner %}
+			<h1 class="hide-heading">{% block page_heading %}{{ _('Contributors') }}{% endblock %}</h1>
+			{% block organizations_search_form %}
+			{% snippet 'snippets/search_form.html', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search contributors...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
+			{% endblock %}
+			{% block organizations_list %}
+			{% if c.page.items or request.params %}
+			{% if c.page.items %}
+			{% snippet "organization/snippets/organization_list.html", organizations=c.page.items %}
+			{% endif %}
+			{% else %}
+			<p class="empty">
+				{{ _('There are currently no contributors for this site') }}.
+				{% if h.check_access('organization_create') %}
+				{% link_for _('How about creating one?'), controller='organization', action='new' %}</a>.
+				{% endif %}
+			</p>
+			{% endif %}
+			{% endblock %}
+		</div>
+	</article>
+	{% endblock %}
+</div>
+{% endblock %}
+{% endblock %}
+
+{% block secondary%}
+{% endblock %}

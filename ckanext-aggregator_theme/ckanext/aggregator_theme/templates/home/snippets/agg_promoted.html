@@ -1,0 +1,31 @@
+{% set intro = g.site_intro_text %}
+
+<div class="module-content box">
+	<header>
+		{% if intro %}
+
+		{{ h.render_markdown(intro) }}
+
+		{% else %}
+
+		<h2> {{ _("Welcome to the BC Local Government Open Data Catalogue") }} </h2>
+		<p>
+			Use this catalogue and its powerful tools to find datasets shared by municipalities and regional districts in British Columbia.
+		</p>
+		<ul>
+			<li>
+				Search by keyword, publisher, tags and more.
+			</li>
+			<li>
+				Use the groups feature to browse collections of related datasets.
+			</li>
+			<li>
+				Apply filters to narrow your searches.
+			</li>
+			<li>
+				When present, use the Data API to build your own applications.
+			</li>
+		</ul>
+		{% endif %}
+	</header>
+</div>
