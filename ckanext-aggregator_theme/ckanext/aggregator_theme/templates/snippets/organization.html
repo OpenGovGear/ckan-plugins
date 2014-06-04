@@ -18,24 +18,8 @@
           {{ h.markdown_extract(organization.description, 180) }}
           {% link_for _('read more'), controller='organization', action='about', id=organization.name %}
         </p>
-      {% else %}
-        <p class="empty">{{ _('There is no description for this contributor') }}</p>
       {% endif %}
-      {% if show_nums %}
-        <div class="nums">
-          <dl>
-            <dt>{{ _('Followers') }}</dt>
-            <dd>{{ h.SI_number_span(organization.num_followers) }}</dd>
-          </dl>
-          <dl>
-            <dt>{{ _('Datasets') }}</dt>
-            <dd>{{ h.SI_number_span(organization.package_count) }}</dd>
-          </dl>
         </div>
-        <div class="follow_button">
-          {{ h.follow_button('group', organization.id) }}
-        </div>
-      {% endif %}
     </section>
   </div>
 {% endwith %}
