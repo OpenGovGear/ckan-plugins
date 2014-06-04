@@ -7,8 +7,20 @@ import ckan.plugins.toolkit as toolkit
 import ckan.logic as logic
 import ckan.lib.helpers as h
 import json
-FEATURED_FILE = "data/featured.json"
 
+FEATURED_FILE = "/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/data/featured.json"
+
+def get_popular_datasets():
+    
+    data_dict = {'rows': 10,
+            'sort': u'views_total desc',
+            'facet': u'false',
+            'fq': u'capacity: "public"',
+            'fl': 'id, name, title, views_total'} 
+    results = logic.get_action('package_search')({'user' :'hayden'}, data_dict)
+
+    print results
+    #return [r for r in results if r.get('views_total', 0) > 0]
 
 def get_orgs():
     '''Return a sorted list of the groups with the most dataset'''
@@ -46,6 +58,8 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
     '''The Aggregator theme plugin.
 
     '''
+
+    
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
@@ -67,7 +81,7 @@ class AggregatorThemeClass(plugins.SingletonPlugin):
         # Template helper function names should begin with the name of the
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
-        return {'get_orgs': get_orgs, 'url_for_display_image': url_for_display_image, 'get_featured' : get_featured, 'get_groups' : get_groups } 
+        return {'get_popular_datasets' : get_popular_datasets, 'get_orgs': get_orgs, 'url_for_display_image': url_for_display_image, 'get_featured' : get_featured, 'get_groups' : get_groups } 
     
     def before_map(self, m):
         

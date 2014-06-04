@@ -1,3 +1,12 @@
+.wrapper {
+margin-top: 5px;
+}
+div.wrapper.no-nav {
+box-shadow: rgb(136, 136, 136) 1px 1px 10px;
+background-color:#fff
+}
+
+
 body {
 	background: #ffffff;
 	margin-top: 0;
@@ -13,11 +22,10 @@ margin-bottom: 20px;
 padding-bottom: 20px;
 }
 .masthead .container {
-width :90%;
 }
 
 .account-masthead .container {
-width: 90%;
+
 
 }
 .media-grid {
@@ -60,13 +68,16 @@ padding-left: 40px;
 
 
 .account-masthead {
-	background: #7109AA;
+	background: #000;
 	width: 100%;
         min-height: 30px;
         position: fixed;
         z-index: 100;
 }
-
+.masthead .container {
+position: relative;
+margin-top: 20px;
+}
 .media-item {
 	position: relative;
 	float: left;
@@ -81,20 +92,20 @@ padding-left: 40px;
 	border-radius: 3px;
 }
 .masthead {
-	background: #7109AA url("../../../base/images/bg.png");
+	background: #000 ;
 	width: 100%;
-	min-height: 100px;
+	min-height: 75px;
 	position: fixed;
 	z-index: 100;
-	top: 30px;
+	top: 0px;
 }
 
 .masthead a {
-	color: #ccdee3;
+	color: #fff;
 }
 
 footer.site-footer {
-	background: #7109AA url("../../../base/images/bg.png");
+	background: #000 url("../../../base/images/bg.png");
 	height: 40px;
 	min-height: 40px;
 	width: 100%
@@ -130,8 +141,7 @@ footer.site-footer {
 	background: #ddd;
 	min-height: 400px;
 	overflow:auto;
-	padding:80px 0;
-	margin:110px auto;
+	margin:74px auto 0 auto;
 
 
 
@@ -139,7 +149,7 @@ footer.site-footer {
 
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
 	color: #fff;
-	background: #00346f;
+	background: #000;
 }
 
 .account-masthead .account ul li a {
@@ -147,8 +157,25 @@ footer.site-footer {
 }
 [role=main], .main {
 
-
-	background: none;
+	padding: 0;
 
 }
+.homepage [role=main]{
+padding:0;
+}
+div#content {
 
+margin-top:130px;
+}
+
+div .image-header { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+.over-image { 
+   position: absolute; 
+   top: 30px; 
+   left: 10px; 
+   width: 100%; 
+}

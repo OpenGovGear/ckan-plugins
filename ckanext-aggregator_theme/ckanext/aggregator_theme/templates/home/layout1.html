@@ -1,10 +1,11 @@
 <div role="main" class="hero">
-<img src ="http://upload.wikimedia.org/wikipedia/commons/b/b3/Campania_banner_View_from_Capri.jpg" />
 
  <div class="container">
-
 <div class="wrapper no-nav">
-
+<div class="image-header">
+<img src ="http://upload.wikimedia.org/wikipedia/commons/b/b3/Campania_banner_View_from_Capri.jpg" />
+<h2 class="over-image">The Intermuncipal Data Catalogue:<br />A Love Story</h2>
+</div>
  <div class="row row1">
 <div class="col1">
 <h3> Contributors </h3>
@@ -19,6 +20,8 @@
 
          <h3> Featured </h3>
 	 {% block featured_group %}
+	  {% set data = h.get_popular_datasets() %}
+
           {% snippet 'home/snippets/featured.html', featured = h.get_featured()[0] %}
         {% endblock %}
         {% block featured_organization %}

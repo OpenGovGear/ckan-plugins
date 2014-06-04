@@ -1,4 +1,6 @@
 {% ckan_extends %}
+{% block header_account %}
+{% endblock %} 
 {% block header_logo %}
           <a class="logo" href="{{ h.url('home') }}"><img src="{{ h.url_for_static("base/images/logo.png") }}" alt="{{ g.site_title }} Logo" title="{{ g.site_title }} Logo" /></a>
        {% endblock %}
@@ -11,3 +13,5 @@
    )
   }}
 {% endblock %} 
+{% block header_site_search %}
+      {% endblock %}

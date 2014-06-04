@@ -11,8 +11,8 @@ c = base.c
 request = base.request
 _ = base._
 
-LICENSE_FILE = "data/licenses.json"
-FEATURED_FILE = "data/featured.json"
+LICENSE_FILE = "/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/data/licenses.json"
+FEATURED_FILE = "/usr/lib/ckan/default/src/ckanext-aggregator_theme/ckanext/aggregator_theme/data/featured.json"
 
 class LicenseController(base.BaseController):
 
