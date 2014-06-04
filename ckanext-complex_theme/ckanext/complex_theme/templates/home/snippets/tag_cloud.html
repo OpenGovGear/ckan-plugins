@@ -1,0 +1,48 @@
+
+<div class="module-content box">
+  <header>
+      <h1 class="page-heading">{{ _("Tag Cloud") }}</h1>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/cloud.js" charset = "utf-8"></script>  
+</header>
+
+<div id= 'cloud'>
+</div>
+ {% set tags = h.get_tag_names() %}
+<script>
+  var fill = d3.scale.category20();
+  var tag_list =  {{ tags|safe }};
+  d3.layout.cloud().size([300, 300])
+      .words(tag_list.map(function(d) {
+        return {text: d, size: 25};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 18; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+
+  function draw(words) {
+    d3.select("#cloud").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+	 .on("click", function(d) { 
+         window.location.href="/"+"dataset?tags="+d.text;})
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+</script>
+
+</div>

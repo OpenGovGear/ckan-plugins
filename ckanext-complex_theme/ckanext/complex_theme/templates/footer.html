@@ -1,0 +1,52 @@
+<footer class="site-footer">
+  <div class="container">
+    {% block footer_content %}
+      <nav class="footer-links">
+        {% block footer_nav %}
+          <ul class="unstyled">
+            {% block footer_links %}
+              <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('About {0}').format(g.site_title) }}</a></li>
+              <li><a href="{{ h.url_for(controller='package', action='search') }}">{{ _('Datasets') }}</a></li>
+              <li><a href="{{ h.url_for(controller='group', action='index') }}">{{ _('Groups') }}</a></li>
+              <li><a href="{{ h.url_for(controller='organization', action='index') }}">{{ _('Organizations') }}</a></li>
+              {% block header_account_notlogged %}
+                <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+                {% if h.check_access('user_create') %}
+                  <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+                {% endif %}
+              {% endblock %}
+           {% endblock %}
+          </ul>
+          <ul class="unstyled">
+          {% block customer_links %}
+           <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('Page One') }}</a></li>
+              <li><a href="{{ h.url_for(controller='package', action='search') }}">{{ _('Page Two') }}</a></li>
+              <li><a href="{{ h.url_for(controller='group', action='index') }}">{{ _('Page Three') }}</a></li>
+              <li><a href="{{ h.url_for(controller='organization', action='index') }}">{{ _('Page Four') }}</a></li>
+           {% endblock %}
+          </nav>
+          <nav class="unstyled">
+          <ul class="unstyled">
+            {% block footer_lang %}
+              {% snippet "snippets/language_selector.html" %}
+            {% endblock %}
+          </ul>
+        {% endblock %}
+      </nav>
+      <div class="poweredBy">
+      <div class="poweredBy inner">
+        {% block footer_attribution %}
+          <p>{% trans %}<a href="http://opengovgear.com" target="_blank"><strong>Powered By OpenGovGear</strong></a>{% endtrans %}</p>
+        {% endblock %}
+      </div>
+      </div>
+    {% endblock %}
+  </div>
+
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>
+
