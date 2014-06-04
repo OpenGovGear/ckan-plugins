@@ -1,5 +1,0 @@
-{% ckan_extends %}
-
-{% block package_basic_fields_custom %}
-  {{ form.input('publisher', label=_('Publish'), id='field-publish', placeholder=_('publisher'), value=data.publisher, error=errors.publisher, classes=['control-medium']) }}
-{% endblock %}
