@@ -1,6 +1,0 @@
-
-        [ckan.plugins]
-	shell_theme=ckanext.shell_theme.plugin:ShellThemePlugin
-        # Add plugins here, e.g.
-        # myplugin=ckanext.shell_theme.plugin:PluginClass
-    
