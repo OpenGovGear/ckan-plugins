@@ -24,15 +24,13 @@ def get_popular_datasets():
 
 def get_orgs():
     '''Return a sorted list of the groups with the most dataset'''
-    context = {'user':'hayden'}
-    data_dict = {'all_fields': True, 'am_member': "false"}
-    return logic.get_action('organization_list')(context, data_dict)
+    data_dict = {'all_fields': True, 'ignore_auth': True}
+    return logic.get_action('organization_list')({}, data_dict)
 
 def get_groups():
     '''Return a sorted list of the groups with the most dataset'''
-    context = {'user':'hayden'}
-    data_dict = {'all_fields': True, 'am_member': "false"}
-    return logic.get_action('group_list')(context, data_dict)
+    data_dict = {'all_fields': True, 'ignore_auth': True}
+    return logic.get_action('group_list'){}, data_dict)
 
 def url_for_display_image(group_id):
     # Call organization_show to get url of uploaded image
