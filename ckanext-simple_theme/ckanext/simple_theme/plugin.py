@@ -1,6 +1,5 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-<<<<<<< HEAD
 import ckan.model as model
 import ckan.lib.search as search
 import json
@@ -30,8 +29,7 @@ def get_tag_names():
     tags = h.get_facet_items_dict('tags', limit=20)
     tag_names = [tag['name'] for tag in tags]
     return json.dumps(tag_names)
-=======
->>>>>>> master
+
 
 class SimpleThemePlugin(plugins.SingletonPlugin):
     '''A simple theme plugin.
@@ -39,11 +37,10 @@ class SimpleThemePlugin(plugins.SingletonPlugin):
     '''
     # Declare that this class implements IConfigurer.
     plugins.implements(plugins.IConfigurer)
-<<<<<<< HEAD
     plugins.implements(plugins.ITemplateHelpers)
-=======
 
->>>>>>> master
+
+
     def update_config(self, config):
 
         # Add this plugin's templates dir to CKAN's extra_template_paths, so
@@ -51,7 +48,6 @@ class SimpleThemePlugin(plugins.SingletonPlugin):
         # 'templates' is the path to the templates dir, relative to this
         # plugin.py file.
         toolkit.add_template_directory(config, 'templates')
-<<<<<<< HEAD
 
     def get_helpers(self):
         '''Register the most_popular_groups() function above as a template
@@ -65,5 +61,3 @@ class SimpleThemePlugin(plugins.SingletonPlugin):
                 'get_tag_names' : get_tag_names
                 }
 
-=======
->>>>>>> master
