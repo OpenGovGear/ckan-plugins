@@ -52,7 +52,7 @@ def get_featured():
 	featured_items.append(featured_item)
     return featured_items
 
-class AggregatorThemeClass(plugins.SingletonPlugin):
+class AggregatorThemePlugin(plugins.SingletonPlugin):
     '''The Aggregator theme plugin.
 
     '''
