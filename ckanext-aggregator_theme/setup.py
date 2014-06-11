@@ -25,6 +25,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         # Add plugins here, e.g.
-        aggregator_theme=ckanext.aggregator_theme.plugin:AggregatorThemeClass
+        aggregator_theme=ckanext.aggregator_theme.plugin:AggregatorThemePlugin
     ''',
 )
