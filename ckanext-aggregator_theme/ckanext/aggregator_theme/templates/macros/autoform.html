@@ -1,0 +1,40 @@
+{% import 'macros/form.html' as form %}
+{%- macro generate(form_info=[], data={}, errors={}, error_summary=[]) -%}
+  {{ form.errors(error_summary) if error_summary }}
+
+  {% for item in form_info %}
+    {% set name = item.name %}
+    {% set error = errors.get(name) %}
+    {% set value = data.get(name) %}
+    {% set id = 'field-%s' % (name|lower|replace('_', '-')|replace('.', '-')) %}
+    {% set control = item.control or 'input' %}
+    {% set label = item.label %}
+    {% set placeholder = item.placeholder %}
+    {% set is_required = item.is_required %}
+    {% set classes = item.classes or [] %}
+    {% set classes = ['control-medium'] if not classes and control == 'input' %}
+
+    {% if control == 'select' %}
+    {% set selected = item.selected %}
+      {% call form.select(name, id=id, label=label, options=item.options, selected=selected, error=error) %}
+        {% if item.extra_info %}{{ form.info(item.extra_info) }}{% endif %}
+      {% endcall %}
+    {% elif control == 'checkbox' %}
+    {% set checked = value %}
+      {% call form.checkbox(name, id=id, label=label, value=value, checked=checked, error=error) %}
+        {% if item.extra_info %}{{ form.info(item.extra_info) }}{% endif %}
+      {% endcall %}
+
+    {% elif control == 'html' %}
+      <div class="control-group control-medium">
+        <div class="controls">
+          {{ item.html }}
+        </div>
+      </div>
+    {% else %}
+      {% call form[control](name, id=id, label=label, placeholder=placeholder, value=value, is_required=is_required, error=error, classes=classes) %}
+        {% if item.extra_info %}{{ form.info(item.extra_info) }}{% endif %}
+      {% endcall %}
+    {% endif %}
+  {% endfor %}
+{%- endmacro -%}

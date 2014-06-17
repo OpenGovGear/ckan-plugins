@@ -1,0 +1,206 @@
+.wrapper {
+margin-top: 25px;
+}
+
+.toolbar .breadcrumb a {
+color:#eee;
+}
+.breadcrumb > li {
+text-shadow: 0 1px 0 black;
+}
+div.wrapper.no-nav {
+box-shadow: rgb(136, 136, 136) 1px 1px 10px;
+background-color:#fff
+}
+
+
+body {
+	background: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVbIXCOyKi1MESRzUPtRMabPVNl6td3LnvElrdwzp9PULWbcuh") no-repeat;
+	background-size: cover;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:Trebuchet MS; 
+}
+.row {
+margin-left:20px;
+}
+
+.page_primary_action {
+margin-bottom: 20px;
+padding-bottom: 20px;
+}
+
+.masthead .container {
+}
+
+.media-grid {
+	margin: 0 0;
+	background: none;
+	border: none;
+	padding: 0px 0px;
+}
+
+.small-media-item {
+	position: relative;
+	float: left;
+	height: 125px;
+	width: 125px;
+	padding: 5px 0px;
+	margin: 5px 10px 0 10px;
+	background-color: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.media-view {
+border-color: #fff;
+}
+.row1 {
+	min-height: 200px;
+}
+.btn-primary {
+	float:right;
+}
+.homepage.layout-1 .row1 .col2 {
+position: relative;
+top: 0;
+right: 0;
+padding-left: 40px;
+}
+
+
+.account-masthead {
+	background: #000;
+	width: 100%;
+        min-height: 30px;
+        position: fixed;
+	top: 0;
+        z-index: 101;
+}
+.masthead .container {
+position: relative;
+margin-top: 20px;
+}
+.media-item {
+	position: relative;
+	float: left;
+	height: 210px;
+	width: 210px;
+	padding: 15px 5px;
+
+	margin: 10px 0px 10px 0px;
+	background-color: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+[role=main] .media-item{
+	height: 160px;
+        width: 190px;
+        padding: 15px 5px;
+
+        margin: 10px 10px 10px 10px;
+
+}
+
+[role=main] .span5 {
+margin-right: 40px;
+padding-left: 20px;
+}
+[role=main] .span11 {
+margin-left: 40px;
+}
+.masthead {
+	background: #6F8699;
+	width: 100%;
+	min-height: 75px;
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	padding-top: 10px;
+}
+
+.masthead a {
+	color: #fff;
+}
+
+footer.site-footer {
+	background: #6F8699 url("../../../base/images/bg.png");
+	height: 40px;
+	min-height: 40px;
+	width: 100%
+	left: 0;
+	right: 0;
+}
+
+.site-footer a {
+	color: #ccdee3;
+}
+
+.homepage .module-search .module-content {
+	background-color: #003058;
+}
+
+.attribution strong, .site-footer label {
+	color: #ccdee3;
+}
+
+.attribution p {
+	float: right;
+}
+
+.homepage .module-search {
+	margin-top: 0;
+}
+
+.homepage .module-search .tags {
+	background-color: #003058;
+}
+
+.hero {
+	min-height: 400px;
+	overflow:auto;
+	margin:74px auto 0 auto;
+
+
+}
+.module-shallow .module-content:last-child {
+background-color:#fff;
+}
+.masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
+	color: #fff;
+	background: #000;
+}
+
+.account-masthead .account ul li a {
+	color: #ddd;
+}
+[role=main], .main {
+	background : transparent;
+	padding: 0;
+
+}
+.homepage [role=main]{
+padding:0;
+}
+div#content {
+
+margin-top:130px;
+}
+
+div .image-header { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+.over-image { 
+   position: absolute; 
+   top: 30px; 
+   left: 10px; 
+   width: 100%; 
+}
+section.module.module-narrow.social {
+background-color: #fff;
+}
