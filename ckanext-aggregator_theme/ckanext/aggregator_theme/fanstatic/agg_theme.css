@@ -1,5 +1,12 @@
 .wrapper {
-margin-top: 5px;
+margin-top: 25px;
+}
+
+.toolbar .breadcrumb a {
+color:#eee;
+}
+.breadcrumb > li {
+text-shadow: 0 1px 0 black;
 }
 div.wrapper.no-nav {
 box-shadow: rgb(136, 136, 136) 1px 1px 10px;
@@ -8,34 +15,31 @@ background-color:#fff
 
 
 body {
-	background: #ffffff;
+	background: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVbIXCOyKi1MESRzUPtRMabPVNl6td3LnvElrdwzp9PULWbcuh") no-repeat;
+	background-size: cover;
 	margin-top: 0;
 	margin-bottom: 0;
 	margin-left: auto;
 	margin-right: auto;
+	font-family:Trebuchet MS; 
 }
 .row {
 margin-left:20px;
 }
+
 .page_primary_action {
 margin-bottom: 20px;
 padding-bottom: 20px;
 }
+
 .masthead .container {
 }
 
-.account-masthead .container {
-
-
-}
 .media-grid {
 	margin: 0 0;
 	background: none;
 	border: none;
 	padding: 0px 0px;
-
-
-
 }
 
 .small-media-item {
@@ -51,7 +55,7 @@ padding-bottom: 20px;
 	border-radius: 3px;
 }
 .media-view {
-border: none;
+border-color: #fff;
 }
 .row1 {
 	min-height: 200px;
@@ -72,7 +76,8 @@ padding-left: 40px;
 	width: 100%;
         min-height: 30px;
         position: fixed;
-        z-index: 100;
+	top: 0;
+        z-index: 101;
 }
 .masthead .container {
 position: relative;
@@ -91,13 +96,30 @@ margin-top: 20px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+[role=main] .media-item{
+	height: 160px;
+        width: 190px;
+        padding: 15px 5px;
+
+        margin: 10px 10px 10px 10px;
+
+}
+
+[role=main] .span5 {
+margin-right: 40px;
+padding-left: 20px;
+}
+[role=main] .span11 {
+margin-left: 40px;
+}
 .masthead {
-	background: #000 ;
+	background: #6F8699;
 	width: 100%;
 	min-height: 75px;
 	position: fixed;
 	z-index: 100;
 	top: 0px;
+	padding-top: 10px;
 }
 
 .masthead a {
@@ -105,7 +127,7 @@ margin-top: 20px;
 }
 
 footer.site-footer {
-	background: #000 url("../../../base/images/bg.png");
+	background: #6F8699 url("../../../base/images/bg.png");
 	height: 40px;
 	min-height: 40px;
 	width: 100%
@@ -138,15 +160,15 @@ footer.site-footer {
 }
 
 .hero {
-	background: #ddd;
 	min-height: 400px;
 	overflow:auto;
 	margin:74px auto 0 auto;
 
 
-
 }
-
+.module-shallow .module-content:last-child {
+background-color:#fff;
+}
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
 	color: #fff;
 	background: #000;
@@ -156,7 +178,7 @@ footer.site-footer {
 	color: #ddd;
 }
 [role=main], .main {
-
+	background : transparent;
 	padding: 0;
 
 }
@@ -178,4 +200,7 @@ div .image-header {
    top: 30px; 
    left: 10px; 
    width: 100%; 
+}
+section.module.module-narrow.social {
+background-color: #fff;
 }

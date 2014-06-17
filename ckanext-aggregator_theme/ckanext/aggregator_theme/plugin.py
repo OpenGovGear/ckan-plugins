@@ -30,7 +30,7 @@ def get_orgs():
 def get_groups():
     '''Return a sorted list of the groups with the most dataset'''
     data_dict = {'all_fields': True, 'ignore_auth': True}
-    return logic.get_action('group_list'){}, data_dict)
+    return logic.get_action('group_list')({}, data_dict)
 
 def url_for_display_image(group_id):
     # Call organization_show to get url of uploaded image
@@ -43,12 +43,11 @@ def get_featured():
     	featured = json.load(infile)
     featured_items = []
     for feature in featured:
-	context = {'user':'civic_info'}
-	data_dict = {'id' : feature}
+	data_dict = {'id' : feature, 'ignore_auth' :True}
 	try:
-		featured_item = logic.get_action('group_show')(context, data_dict)
+		featured_item = logic.get_action('group_show')({}, data_dict)
 	except:
-		featured_item = logic.get_action('organization_show')(context, data_dict)
+		featured_item = logic.get_action('organization_show')({}, data_dict)
 	featured_items.append(featured_item)
     return featured_items
 
