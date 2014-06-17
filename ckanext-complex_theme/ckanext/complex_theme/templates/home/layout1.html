@@ -1,0 +1,41 @@
+<div role="main" class="hero">
+<div class="container shadow">     
+                <div class="row row1">
+                        <div class="span12 col1">
+                                {% block search1 %}
+                                {% snippet 'home/snippets/banner.html' %}
+                                {% endblock %}
+                        </div>
+                </div>
+                <div class="row row2">
+                        <div class="span12 col1">
+                                {% block search2 %}
+                                {% snippet 'home/snippets/search.html' %}
+                                {% endblock %}
+                        </div>
+                </div>
+
+                <div class="row row2">
+                        <div class="span12 col1">
+                                {% block placeholder1 %}
+                                {% snippet "home/snippets/home_page_groups.html", groups=h.get_groups() %}
+				                {% endblock %}
+                        </div>
+                </div>
+        </div>
+        <div class="container shadow">
+                <div class="row row3">
+                        <div class="span6 col1">
+                                {% block placeholder2 %}
+                                {% snippet 'home/snippets/tag_cloud.html' %}
+                                {% endblock %}
+                        </div>
+                        <div class="span6 col2">
+                                {% block placeholder3 %}
+                                {% snippet 'home/snippets/most_viewed_datasets.html' %}
+                                {% endblock %}
+                        </div>
+                </div>
+        </div>
+</div>
+</div>

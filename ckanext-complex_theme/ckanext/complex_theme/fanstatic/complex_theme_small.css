@@ -1,0 +1,162 @@
+.tag {
+display: inline-block;
+margin-bottom: 4px;
+color: #000000;
+background-color: #CACACA;
+padding: 1px 10px;
+border: 0px solid #CACACA;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 100px;
+-webkit-box-shadow: inset 0 0px 0 #CACACA;
+-moz-box-shadow: inset 0 0px 0 #ffffff;
+box-shadow: inset 0 0px 0 #CACACA;
+}
+a.tag:hover {
+text-decoration: none;
+color: #000000;
+background-color: #89A8C4;
+border: 0px solid #000000;
+-webkit-box-shadow: inset 0 1px 0 #3d97b3;
+-moz-box-shadow: inset 0 1px 0 #3d97b3;
+box-shadow: inset 0 0px 0 #000000;
+}
+.media-grid {
+margin: 0;
+list-style: none;
+margin: 0 -0px;
+padding-bottom: 15px;
+background: #FFFFFF;
+border: 5px solid #89A8C4;
+border-width: 4px 0;
+}
+div.container.shadow {
+box-shadow: rgb(136, 136, 136) 1px 1px 10px;
+background-color:#fff
+}
+.media-item {
+  position: relative;
+  float: left;
+  height: 150px;
+  padding: 15px;
+  margin: 15px 0 0 15px;
+  background-color: white;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+  max-height: 110px;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+.account-masthead .account ul li a:hover {
+  color: #ECECEC;
+  background-color: #00232e;
+  text-decoration: none;
+}
+.masthead {
+  *zoom: 1;
+  min-height: 90px;
+  color: #FFFFFF;
+  background: #FFFFFF;
+}
+.masthead a {
+  color: #000000;
+}
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li.active a {
+  background-color: #CECECE;         
+  position: relative; 
+  top: 1px; color: #fqq; box-shadow:none; -moz-box-shadow:none; -webkit-box-shadow:none;
+}
+.site-footer {
+  *zoom: 1;
+  min-height: 55px;
+  color: #ffffff;
+  background: #1B1B1B url("../../../base/images/bg.png");
+  padding: 20px 0;
+}
+.nav-tabs > li > a,
+.nav-pills > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px;
+  background: #DDDDDD; text-align: center; display: block; 
+  width: relative; border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px; 
+  box-shadow: 0px 1px 3px #000; 
+  -moz-box-shadow: 0px 1px 3px #000; 
+  -webkit-box-shadow: 0px 1px 3px #000;
+}
+.nav-pills > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 5px;
+  border-radius: 3px;
+}
+.box {
+  background-color: rgba(255, 255, 255, 0.09);
+  border: 0px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.05);
+}
+[role=main],
+.main {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background: #89A8C4;
+}
+.hero {
+
+}
+.homepage .module-search {
+  padding: 5px;
+  margin: 0;
+  color: #000000;
+  background: #CACACA;
+}
+.homepage .module-search .module-content {
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  background-color: #CACACA;
+  border-bottom: none;
+}
+.homepage .module-search .tags {
+  *zoom: 1;
+  padding: 5px 10px 10px 10px;
+  background-color: #CACACA;
+  -webkit-border-radius: 0 0 0px 0px;
+  -moz-border-radius: 0 0 0px 0px;
+  border-radius: 0 0 0px 0px;
+  .account-masthead {
+  *zoom: 1;
+  min-height: 30px;
+  color: #ffffff;
+  background-color: #444;
+}
+.box {
+background-color: rgba(255, 255, 255, 0.09);
+border: 0px solid #cccccc;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
